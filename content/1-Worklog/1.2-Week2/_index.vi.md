@@ -26,7 +26,7 @@ pre: " <b> 1.2. </b> "
 ### Quá trình:
 * Tìm hiểu mô hình triển khai điện toán đám mây
  * Điện toán đám mây cho phép các nhà phát triển và bộ phận CNTT tập trung vào những điều quan trọng nhất bằng cách tránh các công việc như mua sắm, bảo trì và lập kế hoạch dung lượng. Khi điện toán đám mây ngày càng phổ biến, nhiều chiến lược triển khai đã xuất hiện để đáp ứng nhu cầu cụ thể của người dùng khác nhau. Mỗi loại phương pháp triển khai cung cấp cho bạn các mức độ kiểm soát, tính linh hoạt và quản lý khác nhau. Hiểu được sự khác biệt giữa các chiến lược triển khai này có thể giúp bạn quyết định bộ dịch vụ nào phù hợp với nhu cầu của mình
- ![Mô hình triển khai điện toán đám mây](/images/Worklog/mohinhdientoandammay.jpg)
+ ![Mô hình triển khai điện toán đám mây](/ThucTapAWS/images/Worklog/mohinhdientoandammay.jpg)
  **1. Phương pháp tiếp cận kiến thức:**
 *   **Học qua trực quan hóa (Visual Learning):** Phân tích kỹ các sơ đồ kiến trúc, ví dụ như sơ đồ "Mô hình triển khai điện toán đám mây", để thấy rõ sự khác biệt về quyền kiểm soát, tính linh hoạt và cách quản lý tài nguyên.
 *   **Học qua ví dụ thực tế (Use-case Driven):** Thay vì chỉ đọc lý thuyết, tôi theo dõi luồng triển khai thực tế của ứng dụng mẫu "Danh bạ nhân viên" (Employee Directory). Cách này giúp tôi hiểu rõ một ứng dụng thực tế sẽ cần những dịch vụ AWS nào cấu thành.
@@ -44,7 +44,7 @@ pre: " <b> 1.2. </b> "
         *   *Containers (AWS Fargate):* Đóng gói ứng dụng để chạy đồng nhất ở mọi nơi mà không cần bận tâm đến hệ điều hành máy chủ.
         *   *Serverless (AWS Lambda):* Mô hình điện toán hiện đại nhất, cho phép chạy code trực tiếp để phản hồi lại các sự kiện (event-driven) mà không cần cấu hình bất kỳ máy chủ nào. Đặc biệt, chỉ phải trả tiền cho thời gian mili-giây code thực thi.
     *   **Kỹ năng lựa chọn dịch vụ (Right-sizing):** Bài học quan trọng nhất là không có dịch vụ nào tốt nhất, chỉ có dịch vụ phù hợp nhất. Chọn EC2 khi cần toàn quyền kiểm soát hệ điều hành, chọn Container cho ứng dụng Microservices, và chọn Lambda cho các tác vụ chạy nhanh, tự động hóa mở rộng.
-    ![Mô hình triển khai điện toán đám mây](/images/Worklog/AmazonElasticComputeCloudVI.jpg)
+    ![Mô hình triển khai điện toán đám mây](/ThucTapAWS/images/Worklog/AmazonElasticComputeCloudVI.jpg)
  
 ### Kết quả đạt được tuần 2:
 

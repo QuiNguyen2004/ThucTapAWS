@@ -35,11 +35,11 @@ The focus of this week is the transition from creating servers (Compute) to buil
 **2. Key Takeaways from Module 3:**
 
 * **Amazon VPC (Virtual Private Cloud):** This is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS cloud, giving you complete control over your virtual networking environment (choosing IP ranges, creating subnets, configuring route tables).
-![Amazon VPC Architecture](/images/Worklog/AmazonVPC.jpg)
+![Amazon VPC Architecture](/ThucTapAWS/images/Worklog/AmazonVPC.jpg)
 * **Subnetting & Network Partitioning:**
     * *Public Subnet:* Where resources that need direct Internet access are placed (e.g., Web Servers, Load Balancers). Must be associated with a route pointing to an Internet Gateway.
     * *Private Subnet:* Where internal resources are placed, not allowing direct access from the Internet (e.g., Databases, Backend Apps). For a Private Subnet to connect to the Internet securely (e.g., to download updates), a NAT Gateway is required.
-    ![Creating a subnet](/images/Worklog/Creatingsubnet.jpg)
+    ![Creating a subnet](/ThucTapAWS/images/Worklog/Creatingsubnet.jpg)
 * **Routing:** *Route Tables* act as the routing brain of the network. They contain rules (routes) that determine where network traffic from a subnet or gateway is directed.
 * **VPC Security:**
     * *Security Groups (SG):* Operate at the instance level (EC2 instances). They are stateful - if an inbound request is allowed, the corresponding outbound response is automatically allowed.
@@ -52,4 +52,4 @@ The focus of this week is the transition from creating servers (Compute) to buil
 * Know how to design and configure a network (Subnets, Route Tables, Internet Gateways) to route traffic accurately.
 * Clearly understand the differences and how to combine Security Groups and Network ACLs to create multi-layered network defense.
 * Successfully relaunched the "Employee Directory" application within a customized network EC2 environment, combining Compute knowledge from week 2 and Networking knowledge from week 3.
-![Chứng chỉ](/images/Worklog/AWSTechnicalEssentials.jpg)
+![Chứng chỉ](/ThucTapAWS/images/Worklog/AWSTechnicalEssentials.jpg)

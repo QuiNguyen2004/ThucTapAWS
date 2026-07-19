@@ -33,21 +33,21 @@ This week, the system achieved a major milestone in platform maturation (Infrast
 * Opened the IAM Management Console and provisioned a new role named `pharmacare-lambda-role`.
 * Enforced the Least Privilege principle by attaching three foundational policies: CloudWatch logging access (`AWSLambdaBasicExecutionRole`), VPC Elastic Network Interface (ENI) provisioning (`AWSLambdaVPCAccessExecutionRole`), and customized secret retrieval from AWS Secrets Manager (`pharmacare-read-rds-secret-policy`).
 
-![IAM Role Setup for Lambda](/images/Worklog/Tuan11/lam1.png)
+![IAM Role Setup for Lambda](/ThucTapAWS/images/Worklog/Tuan11/lam1.png)
 
 #### 2. Provisioning the Migration Lambda Function in VPC
 * Provisioned the `pharmacare-db-migration` Lambda function utilizing the Node.js 22.x runtime (x86_64 architecture).
 * Attached the function directly to two Private Subnets within `pharmacare-vpc` and assigned a dedicated Lambda Security Group, allowing secure internal communication to the Amazon RDS PostgreSQL instance.
 
-![Lambda Migration Provisioning Configuration](/images/Worklog/Tuan11/lam2.png)
+![Lambda Migration Provisioning Configuration](/ThucTapAWS/images/Worklog/Tuan11/lam2.png)
 
 #### 3. Optimizing Execution Resources & Timeout Settings
 * Executing SQL scripts to initialize complex table schemas (users, product catalogs, shopping carts, and vector embedding tables for the AI Chatbot) requires continuous network I/O and processing time.
 * Consequently, memory allocation was increased to **256 MB** and the execution timeout was raised from the 3-second default to **60 seconds (1 minute)**, successfully preventing Timeout Exceptions during heavy DDL migrations.
 
-![Memory and Timeout Configuration for Lambda](/images/Worklog/Tuan11/lam3.png)
+![Memory and Timeout Configuration for Lambda](/ThucTapAWS/images/Worklog/Tuan11/lam3.png)
 
-![Confirming General Settings Save](/images/Worklog/Tuan11/lam4.png)
+![Confirming General Settings Save](/ThucTapAWS/images/Worklog/Tuan11/lam4.png)
 
 #### 4. Infrastructure Configuration via Environment Variables
 * Decoupled infrastructure configurations from application code by defining key-value pairs: `DB_HOST`, `DB_NAME` (`pharmacare_ai`), `DB_PORT` (`5432`), and `RDS_SECRET_ARN`.
@@ -58,21 +58,21 @@ This week, the system achieved a major milestone in platform maturation (Infrast
 #### 5. Code Packaging & Cloud Deployment Workflow
 * In a local VS Code environment, developed `index.mjs` and installed necessary dependencies (`pg`, `@aws-sdk/client-secrets-manager`). Used the PowerShell `Compress-Archive` command to bundle the source code and `node_modules` into a `function.zip` archive.
 
-![Initial Code Packaging in VS Code](/images/Worklog/Tuan11/lam6.png)
+![Initial Code Packaging in VS Code](/ThucTapAWS/images/Worklog/Tuan11/lam6.png)
 
 * Uploaded the `function.zip` artifact directly via the Code tab in the AWS Lambda Management Console.
 
-![Uploading ZIP Archive to Lambda Console - Initial Deploy](/images/Worklog/Tuan11/lam7.png)
+![Uploading ZIP Archive to Lambda Console - Initial Deploy](/ThucTapAWS/images/Worklog/Tuan11/lam7.png)
 
 * Inspected and verified the SQL migration scripts directly within the Lambda Console's embedded code editor to ensure structural accuracy.
 
-![Verifying Lambda Source Code After Initial Update](/images/Worklog/Tuan11/lam8.png)
+![Verifying Lambda Source Code After Initial Update](/ThucTapAWS/images/Worklog/Tuan11/lam8.png)
 
 * When schema modifications or additional tables were required, repeated the compression and upload cycle to keep the cloud database structure synchronized.
 
-![Uploading ZIP Archive to Lambda Console - Final Update](/images/Worklog/Tuan11/lam9.png)
+![Uploading ZIP Archive to Lambda Console - Final Update](/ThucTapAWS/images/Worklog/Tuan11/lam9.png)
 
-![Complete Migration Source Code After Successful Update](/images/Worklog/Tuan11/lam10.png)
+![Complete Migration Source Code After Successful Update](/ThucTapAWS/images/Worklog/Tuan11/lam10.png)
 
 #### 6. Amazon Cognito Centralized Authentication Deployment
 * **User Pool & App Client Provisioning:** Deployed `pharmacare-user-pool` as the centralized identity store, enabling automated email/SMS verification and password recovery workflows. Generated an App Client with a unique Client ID to support ReactJS frontend integration.

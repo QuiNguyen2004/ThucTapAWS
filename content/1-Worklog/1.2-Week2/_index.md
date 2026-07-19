@@ -27,7 +27,7 @@ pre: " <b> 1.2. </b> "
 ### Process:
 * Understanding cloud computing deployment models
   * Cloud computing allows developers and IT departments to focus on what matters most by avoiding tasks like procurement, maintenance, and capacity planning. As cloud computing has grown in popularity, several different deployment strategies have emerged to meet the specific needs of different users. Each type of deployment method provides you with different levels of control, flexibility, and management. Understanding the differences between these deployment strategies can help you decide which set of services is right for your needs.
-  ![Cloud computing deployment models](/images/Worklog/mohinhdientoandammay.jpg)
+  ![Cloud computing deployment models](/ThucTapAWS/images/Worklog/mohinhdientoandammay.jpg)
   
 **1. Learning Approach:**
 * **Visual Learning:** Carefully analyzing architectural diagrams, such as the "Cloud Computing Deployment Models" diagram, to clearly see the differences in control, flexibility, and resource management.
@@ -46,7 +46,7 @@ pre: " <b> 1.2. </b> "
         * *Containers (AWS Fargate):* Packaging applications to run consistently anywhere without worrying about the underlying server operating system.
         * *Serverless (AWS Lambda):* The most modern compute model, allowing code execution directly in response to events (event-driven) without provisioning any servers. Notably, you only pay for the exact milliseconds of execution time.
     * **Right-sizing Skills:** The most important lesson is that there is no "best" service, only the "most suitable" one. Choose EC2 when you need full control over the OS, choose Containers for Microservices, and choose Lambda for fast, auto-scaling tasks.
-    ![Amazon Elastic Compute Cloud](/images/Worklog/AmazonElasticComputeCloudEN.jpg)
+    ![Amazon Elastic Compute Cloud](/ThucTapAWS/images/Worklog/AmazonElasticComputeCloudEN.jpg)
 ### Week 2 Achievements:
 
 * Understood what AWS is and mastered the basic service groups: 

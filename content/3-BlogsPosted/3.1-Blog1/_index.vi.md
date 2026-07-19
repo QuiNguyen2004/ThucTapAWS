@@ -50,7 +50,7 @@ Lúc này, các request đã được thu hẹp quyền một cách an toàn và
 
 Để hình dung rõ hơn luồng dữ liệu và các thành phần tương tác, mời bạn xem sơ đồ kiến trúc giải pháp EKS Pod Identity kết hợp Session Policies:
 
-![Kiến trúc EC2 vs Kiến trúc Lambda](/images/Blog/blog1.jpg)
+![Kiến trúc EC2 vs Kiến trúc Lambda](/ThucTapAWS/images/Blog/blog1.jpg)
 
 *Hình 1: Sơ đồ chi tiết luồng xác thực và phân quyền (Nguồn: Dựa trên luồng hoạt động của Amazon EKS).*
 

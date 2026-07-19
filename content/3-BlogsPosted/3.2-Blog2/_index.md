@@ -14,7 +14,7 @@ This article will share interesting insights from AWS's latest update and how it
 
 Looking at the development history of the Well-Architected Framework, we can clearly see a continuous transformation to stay close to real-world operational best practices:
 
-![Development History of AWS Well-Architected Framework](/images/Blog/Well-Architected-History-Dark.jpg)
+![Development History of AWS Well-Architected Framework](/ThucTapAWS/images/Blog/Well-Architected-History-Dark.jpg)
 *Figure 1: Timeline of the AWS Well-Architected Framework development over the years.*
 
 * **2012:** The very first concepts of Well-Architected originated.
@@ -42,7 +42,7 @@ The crucial highlight pointed out by AWS's article is: **We need to consider the
 A classic mistake when approaching the Well-Architected Framework is thinking that this framework is only for Solutions Architects or DevOps engineers. In fact, the new update from AWS increasingly emphasizes comprehensive connectivity within the enterprise.
 
 <div align="center">
-  <img src="/images/Blog/blog.jpg" width="70%" alt="The relationship between Engineering, Finance, and Executives">
+  <img src="/ThucTapAWS/images/Blog/blog.jpg" width="70%" alt="The relationship between Engineering, Finance, and Executives">
 </div>
 
 *Figure 2: Seamless information flow between departments according to the Well-Architected mindset.*

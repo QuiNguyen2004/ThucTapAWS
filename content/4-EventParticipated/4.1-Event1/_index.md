@@ -81,8 +81,8 @@ Attending this workshop, which merged **Neuropsychology** and **Artificial Intel
 - AI is a powerful lever, but to use it effectively, one must have focus and discipline. Combining Dopamine management with optimized AI usage will be my "secret weapon" for my future learning journey.
 
 #### Event Gallery
-![Event Atmosphere](/images/events/event1/anh1.jpg)
-![Learning AI](/images/events/event1/anh2.jpg)
-<img src="/images/events/event1/anh3.jpg" alt="Technical Session" width="800px">
+![Event Atmosphere](/ThucTapAWS/images/events/event1/anh1.jpg)
+![Learning AI](/ThucTapAWS/images/events/event1/anh2.jpg)
+<img src="/ThucTapAWS/images/events/event1/anh3.jpg" alt="Technical Session" width="800px">
 
 > Overall, the event didn't just provide modern AI techniques; it "upgraded" my entire workflow, making me feel ready and more confident to tackle complex systems.

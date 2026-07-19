@@ -24,7 +24,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 04/05/2025 đến ngày 25/07/2025
 
-![Ảnh đại diện của bạn](/images/avatar.jpg)
+![Ảnh đại diện của bạn](/ThucTapAWS/images/avatar.jpg)
 
 
 

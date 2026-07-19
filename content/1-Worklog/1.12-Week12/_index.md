@@ -32,85 +32,85 @@ This week, the architectural focus shifted to connecting isolated infrastructure
 #### 1. Serverless Lambda Backend Construction & Optimization
 * **Lambda Function Provisioning:** Created a new function identified as `pharmacare-backend-api` (Node.js 22.x runtime) deployed within Private App Subnets of the VPC, ensuring complete network isolation from the public internet.
 
-![Backend Lambda Function Overview](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/01-lambda-overview.png)
+![Backend Lambda Function Overview](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/01-lambda-overview.png)
 
 * **Execution Resource Configuration:** Navigated to General Configuration and upgraded Memory to `256 MB`, Ephemeral storage to `512 MB`, raised Timeout to `10 seconds`, and assigned `pharmacare-lambda-role` to allow sufficient execution window for database connection pooling and secret decryption.
 
-![Memory, Timeout, and IAM Role Configuration](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/02-general-configuration.png)
+![Memory, Timeout, and IAM Role Configuration](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/02-general-configuration.png)
 
 * **Environment Variable Injection:** Configured environment keys including `DB_NAME` (`pharmacare_ai`) and `RDS_SECRET_ARN`, instructing Lambda to dynamically retrieve master database credentials from AWS Secrets Manager at runtime.
 
-![Environment Variables Configuration for Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/03-environment-variables.png)
+![Environment Variables Configuration for Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/03-environment-variables.png)
 
 #### 2. Source Code Development & Deployment Packaging
 * Initialized a Node.js project workspace in VS Code and installed required packages: `pg` (PostgreSQL client) and `@aws-sdk/client-secrets-manager`.
 
-![Project Initialization and Node.js Dependency Installation](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/04-backend-project-dependencies.png)
+![Project Initialization and Node.js Dependency Installation](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/04-backend-project-dependencies.png)
 
 * Developed `index.mjs` to parse incoming HTTP methods and routing paths to execute corresponding SQL queries, then compressed the source code and `node_modules` into `function.zip` using PowerShell.
 
-![Packaging Source Code into function.zip](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/05-package-lambda-code.png)
+![Packaging Source Code into function.zip](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/05-package-lambda-code.png)
 
 * Uploaded `function.zip` to the AWS Lambda Management Console and clicked **Deploy** to publish the latest backend application logic.
 
-![Backend Source Code After Uploading to Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/06-upload-lambda-code.png)
+![Backend Source Code After Uploading to Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/06-upload-lambda-code.png)
 
 #### 3. Amazon API Gateway HTTP API Provisioning
 * Accessed the API Gateway Management Console and selected **HTTP API** to minimize latency and optimize operational costs for serverless workloads.
 
-![Selecting Amazon API Gateway HTTP API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/07-select-http-api.png)
+![Selecting Amazon API Gateway HTTP API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/07-select-http-api.png)
 
 * Configured an Integration target directly linking the HTTP API to the `pharmacare-backend-api` Lambda function.
 
-![Integrating HTTP API with Backend Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/08-configure-api-integration.png)
+![Integrating HTTP API with Backend Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/08-configure-api-integration.png)
 
 * Declared public routing endpoints requiring no authorization: `GET /health`, `GET /products`, `GET /categories`, and `GET /stores`.
 
-![Declaring Public Routes](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/09-configure-public-routes.png)
+![Declaring Public Routes](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/09-configure-public-routes.png)
 
 * Configured the `$default` stage with **Auto-deploy** enabled, ensuring that any route or integration modifications are published immediately without manual intervention.
 
-![Configuring Default Stage for HTTP API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/10-define-default-stage.png)
+![Configuring Default Stage for HTTP API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/10-define-default-stage.png)
 
-![Reviewing Configuration Before API Creation](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/11-review-create-api.png)
+![Reviewing Configuration Before API Creation](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/11-review-create-api.png)
 
 * Verified that all defined routing endpoints were successfully created and active within the API dashboard.
 
-![Route List After HTTP API Creation](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/12-api-routes-created.png)
+![Route List After HTTP API Creation](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/12-api-routes-created.png)
 
 * Implemented a **CORS** policy permitting requests originating from local frontend servers (`http://localhost:5173`) across all standard HTTP methods and the `Authorization` header.
 
-![CORS Configuration for ReactJS](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/13-configure-cors.png)
+![CORS Configuration for ReactJS](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/13-configure-cors.png)
 
 #### 4. API Layer Security via Cognito JWT Authorizer
 * Created a new authorizer of type **JWT**, linking its Identity source (`Authorization` header) to the Issuer URL of the Cognito User Pool and the Audience of the App Client ID.
 
-![Creating Cognito JWT Authorizer](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/14-create-jwt-authorizer.png)
+![Creating Cognito JWT Authorizer](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/14-create-jwt-authorizer.png)
 
-![JWT Authorizer After Creation](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/15-authorizer-created.png)
+![JWT Authorizer After Creation](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/15-authorizer-created.png)
 
 * Attached the `pharmacare-cognito-authorizer` to sensitive private routes (`/profile`, `/cart`, `/orders`), automatically rejecting unauthorized requests or invalid tokens at the network edge.
 
-![Attaching Cognito Authorizer to GET Profile Route](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/16-attach-authorizer-route.png)
+![Attaching Cognito Authorizer to GET Profile Route](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/16-attach-authorizer-route.png)
 
 * Tested authentication workflows by logging into the Cognito hosted UI using a test Customer account to verify token issuance and callback redirection.
 
-![Testing Authentication via Cognito Customer Account](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/17-cognito-login-test.png)
+![Testing Authentication via Cognito Customer Account](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/17-cognito-login-test.png)
 
 #### 5. End-to-End (E2E) Integration Testing with ReactJS Frontend
 * Scaffolded a ReactJS application using Vite, installed `react-oidc-context`, and started the local development server.
 
-![Creating ReactJS Application via Vite](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/18-create-react-vite.png)
+![Creating ReactJS Application via Vite](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/18-create-react-vite.png)
 
-![ReactJS Application Running on Local Development Server](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/19-react-development-server.png)
+![ReactJS Application Running on Local Development Server](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/19-react-development-server.png)
 
 * Built a test interface inside `App.jsx` configured to attach the HTTP Header `Authorization: Bearer <access_token>` when calling protected API endpoints.
 
-![ReactJS Test Interface Source Code](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/20-react-test-interface-code.png)
+![ReactJS Test Interface Source Code](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/20-react-test-interface-code.png)
 
 * **E2E Test Execution Results:** The test UI successfully rendered JSON payloads returned from AWS: public APIs responded freely, whereas protected endpoints (`/profile`, `/cart`) only responded successfully when a valid signed JWT Token was included in the request header.
 
-![End-to-End Test Results for Frontend, API Gateway, and Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/21-api-test-result.png)
+![End-to-End Test Results for Frontend, API Gateway, and Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/21-api-test-result.png)
 
 ---
 

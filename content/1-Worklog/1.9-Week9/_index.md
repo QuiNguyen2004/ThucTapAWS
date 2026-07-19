@@ -25,7 +25,7 @@ pre: " <b> 1.9. </b> "
 ---
 
 **Entity-Relationship Diagram (ERD) - Pharmacare AI:**
-![ERD Pharmacare AI](/images/Worklog/database.jpg)
+![ERD Pharmacare AI](/ThucTapAWS/images/Worklog/database.jpg)
 
 ### Detailed Implementation Process:
 

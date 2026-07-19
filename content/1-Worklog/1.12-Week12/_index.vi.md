@@ -32,85 +32,85 @@ Trong tuần này, trọng tâm kiến trúc dịch chuyển sang việc kết n
 #### 1. Xây dựng và Tối ưu hóa Lambda Backend Serverless
 * **Khởi tạo hàm Lambda:** Tạo hàm mới với định danh `pharmacare-backend-api` (runtime Node.js 22.x) nằm hoàn toàn trong Private App Subnets của VPC, đảm bảo cô lập với Internet công cộng.
 
-![Tổng quan hàm Lambda backend](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/01-lambda-overview.png)
+![Tổng quan hàm Lambda backend](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/01-lambda-overview.png)
 
 * **Cấu hình tài nguyên thực thi:** Vào mục General configuration, điều chỉnh bộ nhớ Memory lên `256 MB`, Ephemeral storage `512 MB`, nâng Timeout lên `10 giây` và gán IAM Role `pharmacare-lambda-role` nhằm đủ thời gian cho việc khởi tạo kết nối DB và đọc secret.
 
-![Cấu hình Memory, Timeout và IAM Role](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/02-general-configuration.png)
+![Cấu hình Memory, Timeout và IAM Role](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/02-general-configuration.png)
 
 * **Thiết lập biến môi trường:** Cấu hình các key `DB_NAME` (`pharmacare_ai`) và `RDS_SECRET_ARN` để Lambda tự động truy xuất mật khẩu cơ sở dữ liệu từ AWS Secrets Manager thay vì ghi tĩnh vào code.
 
-![Cấu hình biến môi trường cho Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/03-environment-variables.png)
+![Cấu hình biến môi trường cho Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/03-environment-variables.png)
 
 #### 2. Phát triển Mã nguồn & Đóng gói Triển khai
 * Khởi tạo dự án Node.js tại VS Code, cài đặt thư viện `pg` (PostgreSQL client) và `@aws-sdk/client-secrets-manager`.
 
-![Khởi tạo project và cài đặt thư viện Node.js](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/04-backend-project-dependencies.png)
+![Khởi tạo project và cài đặt thư viện Node.js](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/04-backend-project-dependencies.png)
 
 * Viết mã nguồn `index.mjs` phân tích HTTP method và path để định tuyến truy vấn DB, sau đó nén toàn bộ mã nguồn cùng `node_modules` thành tệp `function.zip` bằng PowerShell.
 
-![Đóng gói source code thành function.zip](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/05-package-lambda-code.png)
+![Đóng gói source code thành function.zip](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/05-package-lambda-code.png)
 
 * Tải tệp `function.zip` lên AWS Lambda Console và nhấn **Deploy** để áp dụng phiên bản mã nguồn backend mới nhất.
 
-![Mã nguồn backend sau khi tải lên Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/06-upload-lambda-code.png)
+![Mã nguồn backend sau khi tải lên Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/06-upload-lambda-code.png)
 
 #### 3. Khởi tạo Cổng Giao tiếp Amazon API Gateway HTTP API
 * Truy cập API Gateway Console, lựa chọn loại **HTTP API** nhằm tối ưu hóa chi phí và tốc độ phản hồi cho mô hình Serverless.
 
-![Chọn loại Amazon API Gateway HTTP API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/07-select-http-api.png)
+![Chọn loại Amazon API Gateway HTTP API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/07-select-http-api.png)
 
 * Cấu hình Integration target liên kết trực tiếp HTTP API với hàm Lambda `pharmacare-backend-api`.
 
-![Tích hợp HTTP API với Lambda backend](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/08-configure-api-integration.png)
+![Tích hợp HTTP API với Lambda backend](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/08-configure-api-integration.png)
 
 * Khai báo nhóm các route công khai (Public Routes) không yêu cầu xác thực như: `GET /health`, `GET /products`, `GET /categories` và `GET /stores`.
 
-![Khai báo các route public](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/09-configure-public-routes.png)
+![Khai báo các route public](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/09-configure-public-routes.png)
 
 * Thiết lập stage `$default` và bật tính năng **Auto-deploy** để mọi thay đổi về route được tự động áp dụng real-time.
 
-![Cấu hình stage mặc định cho HTTP API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/10-define-default-stage.png)
+![Cấu hình stage mặc định cho HTTP API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/10-define-default-stage.png)
 
-![Kiểm tra cấu hình trước khi tạo API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/11-review-create-api.png)
+![Kiểm tra cấu hình trước khi tạo API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/11-review-create-api.png)
 
 * Xác nhận danh sách các endpoint route đã được khởi tạo thành công trên hệ thống.
 
-![Danh sách route sau khi tạo HTTP API](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/12-api-routes-created.png)
+![Danh sách route sau khi tạo HTTP API](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/12-api-routes-created.png)
 
 * Cấu hình chính sách **CORS** cho phép các origin của Frontend local (`http://localhost:5173`) đi kèm các HTTP methods và header `Authorization`.
 
-![Cấu hình CORS cho ReactJS](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/13-configure-cors.png)
+![Cấu hình CORS cho ReactJS](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/13-configure-cors.png)
 
 #### 4. Bảo mật Tầng API với Cognito JWT Authorizer
 * Khởi tạo Authorizer mới thuộc loại **JWT**, liên kết trực tiếp tới Identity source là header `Authorization` đối chiếu với Issuer URL của Cognito User Pool và Audience của App Client.
 
-![Tạo Cognito JWT Authorizer](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/14-create-jwt-authorizer.png)
+![Tạo Cognito JWT Authorizer](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/14-create-jwt-authorizer.png)
 
-![JWT Authorizer sau khi được tạo](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/15-authorizer-created.png)
+![JWT Authorizer sau khi được tạo](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/15-authorizer-created.png)
 
 * Tiến hành gắn Authorizer (`pharmacare-cognito-authorizer`) vào nhóm các route bảo mật riêng tư (`/profile`, `/cart`, `/orders`), từ chối mọi yêu cầu truy cập trái phép hoặc không có token.
 
-![Gắn Cognito Authorizer vào route GET profile](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/16-attach-authorizer-route.png)
+![Gắn Cognito Authorizer vào route GET profile](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/16-attach-authorizer-route.png)
 
 * Kiểm thử quá trình đăng nhập và trả về mã xác thực thông qua tài khoản Customer trên hệ thống Cognito.
 
-![Kiểm tra đăng nhập bằng tài khoản Cognito](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/17-cognito-login-test.png)
+![Kiểm tra đăng nhập bằng tài khoản Cognito](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/17-cognito-login-test.png)
 
 #### 5. Kiểm thử Tích hợp End-to-End với ReactJS Frontend
 * Khởi tạo dự án Frontend ReactJS bằng Vite, cài đặt thư viện `react-oidc-context` và khởi chạy server phát triển local.
 
-![Tạo ứng dụng ReactJS bằng Vite](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/18-create-react-vite.png)
+![Tạo ứng dụng ReactJS bằng Vite](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/18-create-react-vite.png)
 
-![Ứng dụng ReactJS chạy trên máy local](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/19-react-development-server.png)
+![Ứng dụng ReactJS chạy trên máy local](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/19-react-development-server.png)
 
 * Xây dựng mã nguồn giao diện kiểm thử trong `App.jsx`, hỗ trợ gửi request kèm HTTP Header `Authorization: Bearer <access_token>`.
 
-![Code giao diện ReactJS dùng để kiểm thử](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/20-react-test-interface-code.png)
+![Code giao diện ReactJS dùng để kiểm thử](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/20-react-test-interface-code.png)
 
 * **Kết quả thực thi E2E:** Giao diện kiểm thử hiển thị đầy đủ phản hồi JSON từ hạ tầng AWS: các API public hoạt động tự do, trong khi các API protected (như `/profile`, `/cart`) chỉ phản hồi chính xác khi người dùng đã đăng nhập và gửi kèm chuỗi JWT Token hợp lệ.
 
-![Kết quả kiểm thử frontend, API Gateway và Lambda](/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/21-api-test-result.png)
+![Kết quả kiểm thử frontend, API Gateway và Lambda](/ThucTapAWS/images/5-Workshop/5.4-lambda-backend/5.4.1-lambda-backend-api-setup/21-api-test-result.png)
 
 ---
 

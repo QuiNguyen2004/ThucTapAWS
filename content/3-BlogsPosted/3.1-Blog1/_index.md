@@ -51,7 +51,7 @@ At this stage, the requests have been safely and automatically scoped down. Thes
 
 To better visualize the data flow and interacting components, here is the architecture diagram of the EKS Pod Identity solution combined with Session Policies:
 
-![EC2 Architecture vs Lambda Architecture](/images/Blog/blog1.jpg)
+![EC2 Architecture vs Lambda Architecture](/ThucTapAWS/images/Blog/blog1.jpg)
 
 *Figure 1: Detailed authentication and authorization flow (Source: Based on Amazon EKS operational flow).*
 

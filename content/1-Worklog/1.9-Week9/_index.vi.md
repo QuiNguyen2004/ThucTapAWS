@@ -25,7 +25,7 @@ pre: " <b> 1.9. </b> "
 ---
 
 **Sơ đồ Thực thể Kết hợp (ERD) - Pharmacare AI:**
-![Sơ đồ ERD Pharmacare AI](/images/Worklog/database.jpg)
+![Sơ đồ ERD Pharmacare AI](/ThucTapAWS/images/Worklog/database.jpg)
 
 ### Chi tiết quá trình thực hiện:
 

@@ -24,7 +24,7 @@ pre: " <b> 1.8. </b> "
 
 ---
 **Sơ đồ kiến trúc tổng thể của dự án:**
-![AWS Architecture - Pharmacare AI](/images/Worklog/AWS_Architecture-PharmacareAI.png)
+![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/Worklog/AWS_Architecture-PharmacareAI.png)
 ### Chi tiết quá trình thực hiện:
 
 Dựa trên bản thiết kế kiến trúc Pharmacare AI, hệ thống được phân rã thành các phân hệ (Layers) tương tác logic với nhau:

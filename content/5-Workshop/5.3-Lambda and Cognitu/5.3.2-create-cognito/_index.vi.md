@@ -23,7 +23,7 @@ Tài liệu này hướng dẫn chi tiết quy trình thiết lập giải pháp
    * **User Pool ID:** `ap-southeast-1_ccKkTEGWd`.
    * **Client ID:** `5pluo9vlml4kav6ib15vghsn2e`.
 
-   ![Tổng quan cấu hình Cognito User Pool](/images/5-Workshop/5.3-lambda/cognito/cog1.png)
+   ![Tổng quan cấu hình Cognito User Pool](/ThucTapAWS/images/5-Workshop/5.3-lambda/cognito/cog1.png)
 
 **Amazon Cognito User Pool** đóng vai trò là một "thư mục người dùng" (User Directory) bảo mật, cho phép **PharmaCare** quản lý thông tin đăng ký, đăng nhập và xác thực của người dùng mà không cần tự xây dựng cơ chế quản lý tài khoản phức tạp. Việc sử dụng Cognito giúp tách biệt logic xác thực khỏi mã nguồn ứng dụng, tăng cường khả năng mở rộng và đảm bảo các tiêu chuẩn bảo mật hiện đại.
 
@@ -37,7 +37,7 @@ Tài liệu này hướng dẫn chi tiết quy trình thiết lập giải pháp
    * **Admin Group:** Tạo nhóm `Admin` với mô tả "PharmaCare administrator group" (Precedence: 1).
    * **Customer Group:** Tạo nhóm `Customer` với mô tả "PharmaCare customer group" (Precedence: 2).
 
-   ![Tạo nhóm Admin và Customer trong Cognito](/images/5-Workshop/5.3-lambda/cognito/cog2.png)
+   ![Tạo nhóm Admin và Customer trong Cognito](/ThucTapAWS/images/5-Workshop/5.3-lambda/cognito/cog2.png)
 
 Việc phân chia nhóm người dùng (**User Groups**) cho phép **PharmaCare** thực hiện kiểm soát truy cập dựa trên vai trò (**Role-Based Access Control - RBAC**). 
 * Nhóm **Admin** được cấp quyền quản trị các tài nguyên nhạy cảm và thao tác quản lý dữ liệu toàn hệ thống. 

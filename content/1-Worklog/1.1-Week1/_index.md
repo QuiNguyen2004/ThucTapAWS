@@ -45,4 +45,4 @@ The AWS Free Tier provides users with hands-on experience with AWS platforms, pr
 * Anyone who creates a new AWS account is eligible for these offers and can start building on the Cloud.
 
 **3. Certificate:**
-![AWS Training & Certification Certificate](/images/Worklog/AWSFreeTier.jpg)
+![AWS Training & Certification Certificate](/ThucTapAWS/images/Worklog/AWSFreeTier.jpg)

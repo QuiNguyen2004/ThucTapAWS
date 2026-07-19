@@ -23,7 +23,7 @@ This document provides a detailed guide on establishing a user identity manageme
    * **User Pool ID:** `ap-southeast-1_ccKkTEGWd`.
    * **Client ID:** `5pluo9vlml4kav6ib15vghsn2e`.
 
-   ![Cognito User Pool Overview](/images/5-Workshop/5.3-lambda/cognito/cog1.png)
+   ![Cognito User Pool Overview](/ThucTapAWS/images/5-Workshop/5.3-lambda/cognito/cog1.png)
 
 **Amazon Cognito User Pool** acts as a secure "User Directory," allowing **PharmaCare** to manage user registration, login, and authentication without building a custom, complex account management system. Utilizing Cognito decouples authentication logic from the application source code, enhances scalability, and ensures compliance with modern security standards.
 
@@ -37,7 +37,7 @@ This document provides a detailed guide on establishing a user identity manageme
    * **Admin Group:** Create a group named `Admin` with the description "PharmaCare administrator group" (Precedence: 1).
    * **Customer Group:** Create a group named `Customer` with the description "PharmaCare customer group" (Precedence: 2).
 
-   ![Creating Admin and Customer Groups in Cognito](/images/5-Workshop/5.3-lambda/cognito/cog2.png)
+   ![Creating Admin and Customer Groups in Cognito](/ThucTapAWS/images/5-Workshop/5.3-lambda/cognito/cog2.png)
 
 Implementing **User Groups** enables **PharmaCare** to enforce **Role-Based Access Control (RBAC)** effectively.
 * The **Admin** group is granted privileges to manage sensitive resources and system-wide data operations.

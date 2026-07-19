@@ -37,7 +37,7 @@ Thanks to this, developers and testers can still use the data for development or
 
 Looking at the diagram above, I understand the workflow as follows:
 
-![Operational Workflow Diagram](/images/Blog/blog3.jpg)
+![Operational Workflow Diagram](/ThucTapAWS/images/Blog/blog3.jpg)
 
 1. **EventBridge Scheduler:** This service automatically triggers the process according to a configured schedule, eliminating the need to run it manually every time data needs to be refreshed.
 2. **Restore Snapshot:** The system takes a Snapshot from the Production database and restores it to a temporary RDS Instance to perform the next steps.

@@ -36,11 +36,11 @@ Trọng tâm của tuần này là sự chuyển dịch từ việc tạo ra cá
 **2. Các kiến thức trọng tâm cần ghi nhớ (Key Takeaways từ Module 3):**
 
 * **Amazon VPC (Virtual Private Cloud):** Đây là mạng ảo dành riêng cho tài khoản AWS của mình. Nó cô lập về mặt logic với các mạng ảo khác trên đám mây AWS, cho phép kiểm soát hoàn toàn môi trường mạng ảo (chọn dải IP, tạo Subnet, cấu hình Route Table).
-![Mô hình triển khai điện toán đám mây](/images/Worklog/AmazonVPC.jpg)
+![Mô hình triển khai điện toán đám mây](/ThucTapAWS/images/Worklog/AmazonVPC.jpg)
 * **Subnetting & Phân vùng mạng:**
     * *Public Subnet:* Nơi đặt các tài nguyên cần truy cập Internet trực tiếp (ví dụ: Web Server, Load Balancer). Phải được gắn một route hướng ra Internet Gateway.
     * *Private Subnet:* Nơi đặt các tài nguyên nội bộ, không cho phép truy cập trực tiếp từ Internet (ví dụ: Database, Backend App). Để Private Subnet kết nối Internet (ví dụ tải bản cập nhật) một cách an toàn, cần dùng NAT Gateway.
- ![Creating a subnet](/images/Worklog/Creatingsubnet.jpg)
+ ![Creating a subnet](/ThucTapAWS/images/Worklog/Creatingsubnet.jpg)
 * **Định tuyến (Routing):** *Route Tables* là bộ não định tuyến của mạng. Nó chứa các quy tắc (routes) xác định lưu lượng mạng từ Subnet hoặc Gateway sẽ được hướng đi đâu.
 * **Bảo mật mạng (VPC Security) :**
     * *Security Groups (SG):* Hoạt động ở cấp độ Instance (máy chủ EC2). Nó có tính trạng thái (stateful) - nếu cho phép request đi vào thì response tương ứng sẽ tự động được cho phép đi ra.
@@ -53,4 +53,4 @@ Trọng tâm của tuần này là sự chuyển dịch từ việc tạo ra cá
 * Biết cách thiết kế và cấu hình mạng lưới (Subnet, Route Table, Internet Gateway) để định tuyến lưu lượng truy cập chính xác.
 * Hiểu rõ sự khác biệt và cách kết hợp giữa Security Groups và Network ACLs để tạo ra các lớp phòng thủ mạng nhiều tầng.
 * Thực hiện thành công việc tái khởi chạy ứng dụng "Employee Directory" trong môi trường EC2 đã được tùy chỉnh mạng, kết hợp giữa kiến thức Compute của tuần 2 và Networking của tuần 3.
- ![Chứng chỉ](/images/Worklog/AWSTechnicalEssentials.jpg)
+ ![Chứng chỉ](/ThucTapAWS/images/Worklog/AWSTechnicalEssentials.jpg)

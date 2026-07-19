@@ -20,7 +20,7 @@ PharmaCare AI là một hệ thống quản lý nhà thuốc trực tuyến thô
 ### 3. Kiến trúc giải pháp 
 Hệ thống được thiết kế chia thành 5 lớp (Layers) rõ ràng để tối ưu hóa bảo mật, hiệu suất và dễ dàng bảo trì.
 
-![AWS Architecture - Pharmacare AI](/images/proposal/dia1.png)
+![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/proposal/dia1.png)
 
 *Dịch vụ AWS sử dụng* - *Amazon Route 53 & CloudFront*: Quản lý DNS và phân phối nội dung tĩnh (CDN) toàn cầu.
 - *Amazon S3*: Lưu trữ Frontend tĩnh (Web UI) và tài liệu tri thức y khoa thô (Knowledge Docs).

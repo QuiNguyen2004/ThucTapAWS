@@ -73,20 +73,20 @@ The AWS First Cloud Journey event provided a highly "Industry-focused" perspecti
 
 ***(Knowledge on Containers vs VMs)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh6.jpg" style="width: 35%; margin: 0;" alt="VM and Container Comparison">
-  <img src="/images/events/event2/anh7.jpg" style="width: 35%; margin: 0;" alt="Detailed differences between VM and Container">
+  <img src="/ThucTapAWS/images/events/event2/anh6.jpg" style="width: 35%; margin: 0;" alt="VM and Container Comparison">
+  <img src="/ThucTapAWS/images/events/event2/anh7.jpg" style="width: 35%; margin: 0;" alt="Detailed differences between VM and Container">
 </div>
 
 ***(Topic: AWS WAF & Machine Learning by speaker Le Hoang Gia Dai)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh9.jpg" style="width: 35%; margin: 0;" alt="WAF + ML for Cyber Attack Detection">
-  <img src="/images/events/event2/anh10.jpg" style="width: 35%; margin: 0;" alt="Agenda combining AWS WAF and ML">
+  <img src="/ThucTapAWS/images/events/event2/anh9.jpg" style="width: 35%; margin: 0;" alt="WAF + ML for Cyber Attack Detection">
+  <img src="/ThucTapAWS/images/events/event2/anh10.jpg" style="width: 35%; margin: 0;" alt="Agenda combining AWS WAF and ML">
 </div>
 
 ***(Practical challenges with AWS and career orientation)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh4.jpg" style="width: 35%; margin: 0;" alt="Challenges with Serverless">
-  <img src="/images/events/event2/anh12.jpg" style="width: 35%; margin: 0;" alt="Career journey">
+  <img src="/ThucTapAWS/images/events/event2/anh4.jpg" style="width: 35%; margin: 0;" alt="Challenges with Serverless">
+  <img src="/ThucTapAWS/images/events/event2/anh12.jpg" style="width: 35%; margin: 0;" alt="Career journey">
 </div>
 
 > In short, the event served as a perfect bridge between the Network Administration/Security knowledge I am learning in school and practical enterprise Cloud standards. It reinforced my determination to master network infrastructure and integrate AI into security workflows.

@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 04/05/2025 to 25/07/2025
 
-![Your profile picture](/images/avatar.jpg)
+![Your profile picture](/ThucTapAWS/images/avatar.jpg)
 
 ### Report Content
 

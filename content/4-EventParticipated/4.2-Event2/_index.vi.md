@@ -70,20 +70,20 @@ Sự kiện AWS First Cloud Journey mang lại một góc nhìn đậm chất "I
 
 ***(Kiến thức về Container vs VM)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh6.jpg" style="width: 35%; margin: 0;" alt="So sánh VM và Container">
-  <img src="/images/events/event2/anh7.jpg" style="width: 35%; margin: 0;" alt="Chi tiết khác biệt VM và Container">
+  <img src="/ThucTapAWS/images/events/event2/anh6.jpg" style="width: 35%; margin: 0;" alt="So sánh VM và Container">
+  <img src="/ThucTapAWS/images/events/event2/anh7.jpg" style="width: 35%; margin: 0;" alt="Chi tiết khác biệt VM và Container">
 </div>
 
 ***(Chủ đề AWS WAF & Machine Learning của diễn giả Lê Hoàng Gia Đại)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh9.jpg" style="width: 35%; margin: 0;" alt="WAF + ML for Cyber Attack Detection">
-  <img src="/images/events/event2/anh10.jpg" style="width: 35%; margin: 0;" alt="Agenda kết hợp AWS WAF và ML">
+  <img src="/ThucTapAWS/images/events/event2/anh9.jpg" style="width: 35%; margin: 0;" alt="WAF + ML for Cyber Attack Detection">
+  <img src="/ThucTapAWS/images/events/event2/anh10.jpg" style="width: 35%; margin: 0;" alt="Agenda kết hợp AWS WAF và ML">
 </div>
 
 ***(Những thách thức thực tế với AWS và định hướng nghề nghiệp)***
 <div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
-  <img src="/images/events/event2/anh4.jpg" style="width: 35%; margin: 0;" alt="Thách thức với Serverless">
-  <img src="/images/events/event2/anh12.jpg" style="width: 35%; margin: 0;" alt="Hành trình nghề nghiệp">
+  <img src="/ThucTapAWS/images/events/event2/anh4.jpg" style="width: 35%; margin: 0;" alt="Thách thức với Serverless">
+  <img src="/ThucTapAWS/images/events/event2/anh12.jpg" style="width: 35%; margin: 0;" alt="Hành trình nghề nghiệp">
 </div>
 
 > Tóm lại, sự kiện là cầu nối hoàn hảo giữa kiến thức Quản trị mạng/Bảo mật tôi đang học ở trường với các tiêu chuẩn Cloud thực tế của doanh nghiệp. Nó củng cố thêm quyết tâm của tôi trong việc làm chủ hạ tầng mạng và tích hợp AI vào quy trình bảo mật.
