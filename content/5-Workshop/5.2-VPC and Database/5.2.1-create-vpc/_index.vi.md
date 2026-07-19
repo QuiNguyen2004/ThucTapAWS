@@ -12,7 +12,7 @@ pre : " <b> 5.2.1 </b> "
 1. Mở [Amazon VPC console](https://ap-southeast-1.console.aws.amazon.com/vpcconsole/home?region=ap-southeast-1#Home).
 2. Trong thanh điều hướng, chọn **Your VPCs**, click **Create VPC**.
    
-   ![Cấu hình tạo VPC](/ThucTapAWS/images/5-Workshop/5.3-vpc-data/vpc/vpc1.png)
+   ![Cấu hình tạo VPC](/ThucTapAWS/images/5-Workshop/5.2-vpc-data/vpc/vpc1.png)
    
 3. Cấu hình các thông số chi tiết theo mô hình **VPC and more**:
    * **Name tag auto-generation:** `pharmacare-vpc` (hoặc định danh hệ thống tương đương).
