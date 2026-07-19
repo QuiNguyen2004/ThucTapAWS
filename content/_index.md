@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 ---
 
-    
 # Internship Report
 
 ### Student Information:
@@ -25,7 +24,7 @@ chapter: false
 
 &emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 04/05/2025 to 25/07/2025
+&emsp; **Internship Duration:** From 04/05/2025 to 30/07/2026
 
 ![Your profile picture](/ThucTapAWS/images/avatar.jpg)
 
