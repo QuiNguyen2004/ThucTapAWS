@@ -8,23 +8,23 @@ chapter: false
 # Internship Report
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Duc Qui
+ **Full Name:** Nguyen Duc Qui
 
-&emsp; **Phone Number:** 0779177604 
+**Phone Number:** 0779177604 
 
-&emsp; **Email:** nguyenducqui2004
+ **Email:** nguyenducqui2004@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology - Hutech
+**University:** Ho Chi Minh City University of Technology - Hutech
 
-&emsp; **Major:** Information Technology
+ **Major:** Information Technology
 
-&emsp; **Class:** 22DTHE7
+ **Class:** 22DTHE7
 
-&emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
+ **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
-&emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
+ **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 04/05/2025 to 30/07/2026
+ **Internship Duration:** From 04/05/2025 to 30/07/2026
 
 ![Your profile picture](/ThucTapAWS/images/avatar.jpg)
 
