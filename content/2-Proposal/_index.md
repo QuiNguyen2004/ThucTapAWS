@@ -1,115 +1,97 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-06
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+## Online Pharmacy Website & AI Medical Consultation Chatbot System based on AWS Serverless
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+### 1. Executive Summary 
+PharmaCare AI is a smart online pharmacy management system designed to combine a pharmaceutical e-commerce platform with a virtual assistant (AI Chatbot). The project is deployed entirely on an AWS Serverless architecture, integrating RAG (Retrieval-Augmented Generation) technology to provide a seamless shopping experience alongside the ability to accurately and naturally answer medical and medication inquiries based on an internal knowledge base. The solution aims to optimize operational efficiency, reduce the workload for the pharmacist team, and enhance the end-user experience.
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### 2. Problem Statement 
+*Current Problem* Traditional pharmacies and basic online drugstores currently struggle to meet customer demands for quick, accurate 24/7 information regarding medical conditions, side effects, or drug interactions. Manual consultation overloads pharmacists, while systems relying on physical servers (or traditional virtual machines) often incur high maintenance costs and are difficult to scale during traffic spikes.
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+*Solution* PharmaCare AI solves this problem by building a 100% Serverless architecture on AWS. The Frontend (ReactJS) is delivered at high speed via CloudFront and S3. The Backend handles logic using API Gateway and Lambda, securely connecting to a relational database RDS (Multi-AZ) isolated within a VPC. The highlight of the solution is the AI Chatbot system utilizing Amazon Bedrock combined with Amazon OpenSearch Service (Vector Store) under the RAG model. This allows the chatbot to retrieve specialized documents from S3, generating contextual, accurate responses that strictly adhere to the pharmacy's actual data.
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*Benefits and Return on Investment (ROI)* The system automates level-1 customer care (answering FAQs, looking up medication information), saving significant time and personnel costs. Utilizing a Serverless architecture (pay-as-you-go pricing) eliminates idle server costs. The RDS Multi-AZ mechanism ensures High Availability, preventing any disruption to business operations.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+### 3. Solution Architecture 
+The system is designed into 5 distinct layers to optimize security, performance, and maintainability.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+![AWS Architecture - Pharmacare AI](/images/proposal/dia1.png)
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+*AWS Services Used* - *Amazon Route 53 & CloudFront*: DNS management and global static content delivery (CDN).
+- *Amazon S3*: Hosting the static Frontend (Web UI) and raw medical knowledge documents (Knowledge Docs).
+- *AWS WAF*: Web application firewall protecting against common web exploits.
+- *Amazon Cognito*: Identity management, user login, and JWT Token issuance.
+- *Amazon API Gateway & AWS Lambda*: Backend API logic processing and Chatbot integration.
+- *Amazon RDS (Multi-AZ)*: Structured data storage (products, orders, users) within a Private VPC.
+- *Amazon OpenSearch Service*: Vector database (Vector Store) for semantic search serving the Chatbot.
+- *Amazon Bedrock*: LLM (Large Language Model) platform to generate Chatbot responses.
+- *AWS Secrets Manager*: Secure management of Database credentials.
+- *CloudWatch, SNS, IAM, Backup*: Monitoring, alerting, access management, and data backup.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+*Component Design (Main Flows)* - *Frontend Layer*: Users access via Route 53, load the web from S3/CloudFront, authenticate via Cognito, and are protected by WAF.
+- *Backend API Layer*: API Gateway routes requests to Lambda. Lambda calls Secrets Manager to retrieve credentials and connects to RDS to process business logic (sales, orders).
+- *Database Layer (VPC)*: Sensitive data is completely isolated in a Private Subnet with a Multi-AZ fallback mechanism.
+- *AI Chatbot / RAG Layer*: 
+  - *Indexing Flow*: Documents from S3 -> Lambda Indexing -> Bedrock (Embedding) -> OpenSearch.
+  - *Query Flow*: User asks a question -> Lambda Chatbot -> Retrieves context from OpenSearch -> Bedrock generates the answer -> Returns to User.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+### 4. Technical Implementation 
+*Implementation Phases* The project is divided into 4 main phases:
+1. *Infrastructure & Networking*: Configure VPC, Private/Public Subnets, deploy RDS Multi-AZ, and OpenSearch.
+2. *Data & Knowledge Layer Development*: Create S3 buckets, set up the document Indexing pipeline (Lambda + Bedrock) feeding into OpenSearch.
+3. *API & Business Logic Construction (Backend)*: Write code for Lambda functions handling orders, products, and the Chatbot Handler. Configure API Gateway and Cognito.
+4. *Frontend Integration & Security*: Build the ReactJS app, push to S3, and distribute via CloudFront. Set up WAF, CloudWatch Alarms, and IAM Roles.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+*Technical Requirements* - *Frontend*: ReactJS, RESTful API communication.
+- *Backend*: Programming languages supported by AWS Lambda (Node.js/Python), using AWS SDK (Boto3/AWS SDK for JS) to interact across services.
+- *AI/ML*: Solid understanding of Embeddings, Vector Databases (OpenSearch), Prompt Engineering, and Amazon Bedrock API usage.
+- *Infrastructure*: Use AWS CDK or Terraform to automate infrastructure deployment (IaC).
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+### 5. Roadmap & Milestones 
+- *Week 1 (Design & Foundation)*: Draw detailed architecture, set up AWS environments (VPC, IAM, S3). Finalize Database schema on RDS.
+- *Week 2 (Backend & RAG Pipeline)*: Program core APIs. Successfully build the document processing flow (Indexing) and Chatbot queries using Amazon Bedrock.
+- *Week 3 (Frontend & Final Integration)*: Develop the web interface, integrate Cognito authentication, and connect the Chatbot UI with the API.
+- *Week 4 (Testing, Optimization & Handover)*: Run stress-tests, verify WAF security, set up CloudWatch/SNS alerting systems, and write handover documentation.
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+### 6. Budget Estimation 
+The system is designed with a Serverless approach; however, due to architectural requirements utilizing RDS Multi-AZ and OpenSearch (services requiring underlying running instances), costs are divided into two main categories. The prices below are estimated based on minimal configurations (suitable for Dev/Test environments) in a standard region (e.g., us-east-1 or ap-southeast-1).
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+*Fixed Infrastructure Costs (Monthly Estimate)*
+- **Amazon RDS (Multi-AZ): ~$30.00 - $35.00/month**. (Using a `db.t3.micro` instance with basic storage. This is the most expensive component as it maintains 2 database instances running in parallel across 2 different Availability Zones for redundancy).
+- **Amazon OpenSearch Service: ~$25.00 - $28.00/month**. (Using 1 `t3.small.search` instance and 10GB EBS as the Vector Store for AI data).
+- **AWS WAF: ~$6.00/month**. ($5.00 fixed fee for 1 Web ACL and ~$1.00 for custom frontend protection rules).
+- **Amazon Route 53: ~$0.50/month**. (Maintenance fee for 1 Hosted Zone).
+- **AWS Secrets Manager: ~$0.40/month**. (Storage fee for 1 database credential secret).
+- **TOTAL FIXED COSTS: ~ $61.90 - $69.90/month**.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+*Variable Costs (Serverless & Pay-as-you-go)*
+- **Amazon Bedrock: ~$2.00 - $5.00/month**. (Costs based on input/output Tokens. For a test project scale, query volume is relatively low).
+- **AWS Lambda, API Gateway, S3, CloudFront, Cognito: ~$0.00 - $2.00/month**. (By leveraging the AWS Free Tier with millions of free requests per month, the team incurs almost no cost for this architectural layer).
+- **TOTAL VARIABLE COSTS: ~ $2.00 - $7.00/month**.
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+**=> ESTIMATED TOTAL COST: Approximately $65.00 - $75.00/month (If running continuously 24/7).**
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+*Feasibility Analysis with a $200 Budget*
+With a projected budget of $200, the PharmaCare AI system can sustain operations under the following scenarios:
+**Scenario 1 - Full-time Operation (24/7):** If the team leaves all services (especially RDS and OpenSearch) running non-stop, the system will consume about $75/month. The $200 budget will last for **about 2.5 to nearly 3 months**. This duration is just enough to cover the entire development, testing, and final presentation phases.
+**Scenario 2 - Optimized Start/Stop (Recommended):** During the development phase (Month 1 to Month 3), the team can write automated scripts (or use Lambda cronjobs) to **temporarily stop** the Amazon RDS and OpenSearch instances at night or on non-coding days. This practice can reduce fixed infrastructure costs by up to 50-60%. Consequently, the monthly cost drops to around $30 - $40, allowing the $200 budget to stretch up to **5 - 6 months**.
 
-Total: $0.7/month, $8.40/12 months
+*(The team will set up AWS Budgets and CloudWatch Billing Alarms at $50, $100, and $150 milestones to proactively monitor and prevent unexpected charges).*
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+### 7. Risk Assessment 
+*Risk Matrix* - *Uncontrolled AWS Costs*: High impact, medium probability (especially with RDS and OpenSearch).
+- *AI Chatbot Hallucination*: High impact, medium probability (providing incorrect medical information).
+- *Database Credential Leakage*: Critical impact, low probability.
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Mitigation Strategies* - *Costs*: Establish automated budget alerts (AWS Budgets). Pause RDS/OpenSearch instances during idle times if 24/7 uptime is not required for coding.
+- *AI*: Optimize the System Prompt on Bedrock, strictly limit the response data source to OpenSearch (Strict RAG), and consistently display a warning: "This Chatbot does not replace a doctor."
+- *Security*: Use AWS Secrets Manager, never hardcode credentials in the source code, and apply the Principle of Least Privilege for IAM Roles.
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes 
+*Technical Improvements*: A highly stable pharmaceutical e-commerce website with fast response times powered by CloudFront. A smart AI Chatbot with strong bilingual comprehension, capable of consulting and accurately extracting information from internal medical documents.
+*Long-term Value*: An infrastructure system that complies with modern cloud design principles: Highly secure, automatically scalable, and easily maintainable, creating a solid foundation for future real-world business expansion.

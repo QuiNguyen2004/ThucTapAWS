@@ -1,31 +1,30 @@
 ---
 title: "Báo cáo thực tập"
-date: 2024-01-01
+date: 2026-07-06
 weight: 1
 chapter: false
 ---
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Văn A
+&emsp; **Họ và tên:** Nguyễn Đức Qui
 
-&emsp; **Số điện thoại:** 0989888999
+&emsp; **Số điện thoại:** 0779177604
 
-&emsp; **Email:** Anguyenvan@gmail.com
-
-&emsp; **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM
+&emsp; **Email:** nguyenducqui2004@gmail.com
+&emsp; **Trường:** Đại học công nghệ thành phố Hồ Chí Minh - Hutech
 
 &emsp; **Ngành:** Công nghệ thông tin
 
-&emsp; **Lớp:** AWS082025
+&emsp; **Lớp:** 22DTHE7
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam
 
 &emsp; **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
+&emsp; **Thời gian thực tập:** Từ ngày 04/05/2025 đến ngày 25/07/2025
 
-![Ảnh đại diện của bạn](/images/avatar.png)
+![Ảnh đại diện của bạn](/images/avatar.jpg)
 
 
 

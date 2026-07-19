@@ -1,125 +1,88 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-07-06
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “Cách học sao cho hợp lý & Trí tuệ nhân tạo (AI)”
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Khám phá hệ thống phần thưởng của não bộ (Dopamine) để tối ưu hóa động lực và khả năng tiếp thu.
+- Chia sẻ các kỹ thuật Cognitive Learning (Học tập nhận thức) để đạt trạng thái "Deep Work".
+- Giới thiệu phương pháp Automated Prompt Engineering giúp tối ưu hóa việc sử dụng các mô hình ngôn ngữ lớn (LLM).
+- Hướng dẫn cấu trúc lệnh (Prompt) chuẩn xác, các kỹ thuật AI nâng cao và bài toán tối ưu chi phí (Token Economics).
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Huỳnh Hoàng Long** - Diễn giả về phương pháp học tập & Cognitive Learning
+- **Nguyễn Tuấn Thịnh** - Chuyên gia về Trí tuệ nhân tạo (AI) & Prompt Engineering
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### The Dopamine System trong học tập (Huỳnh Hoàng Long)
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- **Hacking the Reward Pathway**: Dopamine không sinh ra từ sự thỏa mãn, mà từ **sự mong đợi (anticipation)**. Cần cấu trúc việc học để tạo ra các vòng lặp động lực liên tục thông qua các "chiến thắng nhỏ" (small wins).
+- **Cognitive Learning Routine**:
+    - **Brain Manipulation**: Dành 2 phút trước khi học để tưởng tượng bản thân đã nắm vững được kiến thức.
+    - **Environment Reset**: Cách ly điện thoại/mạng xã hội 30 phút trước khi bước vào trạng thái tập trung sâu.
+    - **Pomodoro Technique**: Sprint 25 phút tập trung cao độ, sau đó phục hồi chủ động (không dùng thiết bị điện tử).
+    - **Celebrate Micro-Wins**: Mỗi đoạn tài liệu/đoạn code hoàn thành là một trigger tạo Dopamine cho bước tiếp theo.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Automated Prompt Engineering (Nguyễn Tuấn Thịnh)
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
-
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
-
-#### Domain-Driven Design (DDD)
-
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
-
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- **Tại sao Engineering lại quan trọng?**: Giảm 60% kết quả không nhất quán so với prompt chung chung; tránh lãng phí token, tiết kiệm thời gian và tối ưu chi phí API.
+- **Cấu trúc của một Perfect Prompt**:
+    - **Role**: Xác định vai trò của AI (VD: Senior Security Analyst, Expert Java Developer).
+    - **Instruction**: Yêu cầu/nhiệm vụ cụ thể với ngôn từ mang tính chỉ đạo.
+    - **Context**: Ngữ cảnh, dữ liệu nền tảng, hoặc lịch sử hệ thống.
+- **Kỹ thuật nâng cao**:
+    - **Chain-of-Thought (CoT)**: Ép AI suy luận từng bước để tăng độ chính xác logic.
+    - **Tree-of-Thoughts (ToT)**: Khám phá nhiều nhánh suy luận và chọn con đường logic nhất.
+    - **RAG**: Tích hợp cơ sở dữ liệu ngoài để chống "ảo giác" (hallucinations).
+- **Kiến trúc & Kinh tế học (Token Economics)**: Ứng dụng AI vào tự động hóa SDLC. Hiểu rõ công thức tính chi phí dựa trên Input/Output tokens để không bị lãng phí tài nguyên.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Tư Duy Học Tập & Làm Việc
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- **Quy trình tối ưu hóa não bộ**: Hiểu được cơ chế sinh học đằng sau sự chán nản hay mất tập trung, từ đó biết cách "hack" động lực của chính mình.
+- **Tư duy giao tiếp với máy**: Chuyển từ việc "hỏi AI" sang "thiết kế ngữ cảnh và chỉ thị cho AI" một cách có hệ thống và khoa học.
 
 #### Kiến Trúc Kỹ Thuật
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- **Quản lý trạng thái học tập**: Áp dụng triệt để Pomodoro kết hợp với Digital Detox ngắn hạn để duy trì sự bền bỉ.
+- **Integration AI Tools**: Biết khi nào nên dùng CoT, ToT hay RAG tùy thuộc vào độ phức tạp của bài toán lập trình.
+- **SDLC Automation**: Tích hợp AI vào từng khâu: Plan → Code → Refactor (Prompt optimization) → Deploy.
 
-#### Chiến Lược Hiện Đại Hóa
+### Ứng Dụng Vào Công Việc & Học Tập
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- **Setup lại môi trường**: Áp dụng quy tắc "Environment Reset" (tắt điện thoại 30 phút trước khi bắt đầu) để giữ sự tập trung cao độ khi nghiên cứu các kiến trúc phần mềm hoặc cấu hình hệ thống.
+- **Thiết kế Prompt chuẩn hóa**: Sử dụng format (Role - Instruction - Context) khi nhờ AI debug các logic phức tạp trong backend (như Spring Boot, Flask) hay khi phân tích cấu trúc RESTful API thay vì hỏi những câu chung chung.
+- **Áp dụng Chain-of-Thought (CoT)**: Sử dụng kỹ thuật này ép AI phân tích logic từng bước khi cần thiết lập rule cho Wazuh, OPNsense firewall hoặc khi bóc tách các log hệ thống bảo mật phức tạp.
+- **Chia nhỏ task (Micro-wins)**: Chia nhỏ các project thực tế thành các endpoint/module siêu nhỏ để tận dụng cơ chế tiết Dopamine, giữ lửa trong các phiên làm việc dài.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia sự kiện kết hợp giữa **Tâm lý học thần kinh** và **Trí tuệ nhân tạo** là một trải nghiệm mở mang tầm mắt, giúp tôi hiểu rằng công nghệ tiên tiến nhất cũng cần một bộ não được chuẩn bị tốt nhất để làm chủ. Một số trải nghiệm nổi bật:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Học hỏi từ các diễn giả có chuyên môn
+- Diễn giả Huỳnh Hoàng Long đã bóc tách rõ ràng cơ chế khoa học của động lực, giúp tôi giải đáp được tại sao mình hay bị trì hoãn và có phương pháp khắc phục tận gốc.
+- Diễn giả Nguyễn Tuấn Thịnh mang đến góc nhìn thực tế, sành sỏi về mặt kỹ thuật, đặc biệt là bài toán tối ưu chi phí (Token Economics) rất quan trọng khi làm việc sâu với AI API.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+#### Trải nghiệm kỹ thuật & Phương pháp thực tế
+- Thích thú nhất với khái niệm **"Brain Manipulation"** và sự khác biệt rõ rệt về chất lượng code/câu trả lời khi so sánh một Prompt thông thường với Prompt được cấu trúc theo **Tree-of-Thoughts**. Nó thay đổi hoàn toàn cách tôi tận dụng các công cụ LLM hiện nay.
 
 #### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+- Workshop tạo không khí cởi mở. Việc kết hợp một chủ đề về "con người" (cách bộ não hoạt động) và một chủ đề về "máy móc" (Prompt Engineering) giúp các cuộc thảo luận trở nên đa chiều và bổ ích.
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+- AI là một đòn bẩy tuyệt vời, nhưng để sử dụng đòn bẩy đó, bản thân mình phải có sự tập trung và kỷ luật. Việc kết hợp quản lý Dopamine và sử dụng AI tối ưu sẽ là "vũ khí" đắc lực cho chặng đường học tập sắp tới.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+![Mô tả ảnh](/images/events/event1/anh1.jpg)
+![Mô tả ảnh](/images/events/event1/anh2.jpg)
+<img src="/images/events/event1/anh3.jpg" alt="Mô tả ảnh" width="800px">
+> Tổng thể, sự kiện không chỉ cung cấp các kỹ thuật AI hiện đại mà còn "nâng cấp" luôn cả phương pháp làm việc của bản thân tôi, giúp tôi sẵn sàng và tự tin hơn để giải quyết các hệ thống phức tạp.

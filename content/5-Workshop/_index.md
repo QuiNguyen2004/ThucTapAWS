@@ -1,31 +1,57 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-19
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-# Secure Hybrid Access to S3 using VPC Endpoints
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+In the **PharmaCare AI** project, the system is designed using a Cloud Native architecture. The backend Lambda functions and AI Lambda functions are deployed inside the **Private App Subnets** of an Amazon VPC. These workloads do not need direct access to the public Internet. Instead, they privately connect to Amazon S3, Amazon Bedrock, Amazon OpenSearch Serverless, and Amazon RDS through internal AWS endpoints.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+Using **VPC Endpoints** and **AWS PrivateLink** keeps service-to-service traffic within the AWS network, reduces the risk of data exposure, minimizes dependence on a NAT Gateway, and strengthens the overall security of the system.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+The PharmaCare AI architecture uses two types of VPC Endpoints:
+
+- **Gateway VPC Endpoint:** Used by the Indexing Lambda function to access the **S3 Knowledge Documents** bucket. The endpoint is associated with the route table of the Private Subnets, allowing the function to read documents from Amazon S3 without sending traffic through the Internet.
+
+- **Interface VPC Endpoint:** Used by the AI Lambda functions to privately connect to **Amazon Bedrock Runtime** and **Amazon OpenSearch Serverless** through Elastic Network Interfaces inside the VPC. Service addresses are resolved through Private DNS.
+
+The main application workflow is described below:
+
+```text
+User
+    ↓
+Route 53 → CloudFront → S3 Frontend
+    ↓
+API Gateway
+    ↓
+Backend Lambda in Private App Subnet
+    ↓
+Amazon RDS in Private DB Subnet
+```
+
+For the AI chatbot:
+
+```text
+S3 Knowledge Documents
+    ↓ S3 Gateway Endpoint
+Indexing Lambda
+    ↓ Bedrock Runtime Interface Endpoint
+Amazon Bedrock Embedding Model
+    ↓
+OpenSearch Serverless Vector Store
+```
+
+When a user submits a question, the **Chatbot Lambda** creates a vector embedding for the question through Amazon Bedrock, retrieves relevant documents from OpenSearch Serverless, and uses an AI model to generate an appropriate response. The entire process is monitored through Amazon CloudWatch. When an error occurs or a configured threshold is exceeded, CloudWatch Alarm sends a notification to the administrator through Amazon SNS.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop Overview](5.1-Workshop-overview/)
+2. [VPC and Database Preparation](5.2-VPC-and-Database/)
+3. [Lambda and Amazon Cognito](5.3-Lambda-and-Cognitu/)
+4. [Lambda Backend](5.4-Backend/)
+5. [AI Chatbot](5.5-Chat-aiy/)
+6. [Website Deployment](5.6-Deploy-web/)
+7. [Monitoring, Backup, and Security for PharmaCare](5.7-Monitoring-backup-security/)

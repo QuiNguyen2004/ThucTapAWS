@@ -1,126 +1,88 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-07-06
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
-
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Effective Learning (Dopamine) & Automated Prompt Engineering
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Explore the brain's reward system (Dopamine) to optimize motivation and information retention.
+- Share Cognitive Learning techniques to achieve a state of "Deep Work."
+- Introduce Automated Prompt Engineering to optimize the use of Large Language Models (LLMs).
+- Provide guidance on structured prompting, advanced AI techniques, and cost optimization (Token Economics).
 
-### Speakers
+### Speaker List
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Huynh Hoang Long** - Speaker on Learning Methods & Cognitive Learning
+- **Nguyen Tuan Thinh** - Expert in Artificial Intelligence (AI) & Prompt Engineering
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### The Dopamine System in Learning (Huynh Hoang Long)
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- **Hacking the Reward Pathway**: Dopamine is triggered by **anticipation**, not just the reward itself. Learning should be structured to create continuous motivation loops through "small wins."
+- **Cognitive Learning Routine**:
+    - **Brain Manipulation**: Spend 2 minutes before studying visualizing yourself mastering the knowledge.
+    - **Environment Reset**: Disconnect from phones/social media 30 minutes before entering deep focus.
+    - **Pomodoro Technique**: 25-minute high-intensity sprints followed by active recovery (no digital stimulation).
+    - **Celebrate Micro-Wins**: Every finished paragraph or code block acts as a dopamine trigger for the next step.
 
-#### Transitioning to modern application architecture – Microservices
+#### Automated Prompt Engineering (Nguyen Tuan Thinh)
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- **Why Engineering Matters**: Reduces inconsistent results by 60% compared to generic prompts; prevents token waste, saves time, and optimizes API costs.
+- **Anatomy of a Perfect Prompt**:
+    - **Role**: Define the AI's persona (e.g., Senior Security Analyst, Expert Java Developer).
+    - **Instruction**: Specific tasks or requirements using directive language.
+    - **Context**: Relevant background, system history, or foundational data.
+- **Advanced Techniques**:
+    - **Chain-of-Thought (CoT)**: Forcing the AI to reason step-by-step to improve logical accuracy.
+    - **Tree-of-Thoughts (ToT)**: Exploring multiple reasoning branches to find the most logical path.
+    - **RAG (Retrieval-Augmented Generation)**: Integrating external databases to prevent hallucinations.
+- **Architecture & Token Economics**: Applying AI to SDLC automation. Understanding cost calculation based on Input/Output tokens to manage resources efficiently.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Learning & Working Mindset
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- **Brain Optimization Process**: Understanding the biological mechanisms behind boredom or distraction to "hack" one's own motivation.
+- **Human-Machine Communication**: Shifting from simply "asking AI" to "designing context and directives" systematically.
 
 #### Technical Architecture
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- **Managing Learning States**: Implementing Pomodoro combined with short-term Digital Detox to maintain stamina.
+- **Integrating AI Tools**: Knowing when to use CoT, ToT, or RAG based on the complexity of the programming task.
+- **SDLC Automation**: Integrating AI into every stage: Plan → Code → Refactor (Prompt optimization) → Deploy.
 
-#### Modernization Strategy
+### Applications to Work & Study
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Environment Setup**: Applying the "Environment Reset" rule (turning off phones 30 minutes prior) to maintain high focus when researching software architecture or system configurations.
+- **Standardized Prompt Design**: Using the (Role - Instruction - Context) format when using AI to debug complex backend logic (Spring Boot, Flask) or analyze RESTful API structures.
+- **Applying Chain-of-Thought (CoT)**: Using this technique to force AI to analyze logic step-by-step when setting up Wazuh rules, OPNsense firewalls, or parsing complex security logs.
+- **Task Decomposition (Micro-wins)**: Breaking down real-world projects into tiny modules/endpoints to leverage dopamine release and stay motivated during long work sessions.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending this workshop, which merged **Neuropsychology** and **Artificial Intelligence**, was an eye-opening experience. It taught me that even the most advanced technology requires a well-prepared mind to master it. Some highlights include:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Learning from Experts
+- Speaker Huynh Hoang Long clearly broke down the scientific mechanism of motivation, helping me understand why I procrastinate and how to fix it at its root.
+- Speaker Nguyen Tuan Thinh provided a practical, technical perspective, especially regarding Token Economics, which is crucial when working deeply with AI APIs.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Technical & Practical Experience
+- I was most intrigued by the concept of **"Brain Manipulation"** and the significant difference in code quality when comparing a basic prompt to one structured with **Tree-of-Thoughts**. It has completely changed how I utilize LLM tools.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Networking & Exchange
+- The workshop had an open atmosphere. Combining a "human-centric" topic (how the brain works) with a "machine-centric" one (Prompt Engineering) made the discussions multi-dimensional and rewarding.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+#### Lessons Learned
+- AI is a powerful lever, but to use it effectively, one must have focus and discipline. Combining Dopamine management with optimized AI usage will be my "secret weapon" for my future learning journey.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+#### Event Gallery
+![Event Atmosphere](/images/events/event1/anh1.jpg)
+![Learning AI](/images/events/event1/anh2.jpg)
+<img src="/images/events/event1/anh3.jpg" alt="Technical Session" width="800px">
 
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the event didn't just provide modern AI techniques; it "upgraded" my entire workflow, making me feel ready and more confident to tackle complex systems.

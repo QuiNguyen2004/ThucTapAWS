@@ -1,125 +1,89 @@
 ---
 title: "Event 2"
-date: 2024-01-01
-weight: 1
+date: 2026-07-09
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “AWS First Cloud Journey: Từ Ảo hóa, Serverless đến AI trong Bảo mật”
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Khám phá hành trình chuyển dịch lên nền tảng điện toán đám mây (Cloud Computing) với AWS.
+- Phân tích sâu về kiến trúc hệ thống hiện đại: so sánh giữa Virtualization (Máy ảo) và Containerization (Docker).
+- Nhận diện các thách thức thực tế khi triển khai kiến trúc Serverless (AWS Lambda, DynamoDB).
+- Ứng dụng Machine Learning kết hợp với AWS WAF để xây dựng hệ thống phát hiện xâm nhập mạng (NIDS).
+- Định hướng nghề nghiệp và chia sẻ kinh nghiệm thực tế từ lộ trình Helpdesk/Sysadmin tiến tới DevOps.
 
-### Danh Sách Diễn Giả
+### Danh Sách Diễn Giả & Thời Gian
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **09:20 - 10:00 | Nguyễn Quốc Bảo** - **10:00 - 10:35 | Nguyễn Huỳnh Quốc Bảo** - **10:35 - 10:50 | Việt Phát** - **10:50 - 11:10 | Lê Hoàng Gia Đại** - Chuyên gia Bảo mật (Chủ đề: WAF + ML for Cyber Attack Detection)
+- **11:10 - 12:00 | Trần Trung Vinh** - (Chủ đề: Hành trình nghề nghiệp từ Sysadmin đến DevOps & Câu chuyện phỏng vấn tại Central Retail Group)
+
+*(Ghi chú: Các chủ đề kỹ thuật về Container và Serverless được phân bổ trong các phiên sáng của các diễn giả Quốc Bảo, Huỳnh Quốc Bảo và Việt Phát).*
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### 1. Cuộc chiến Kiến trúc: Virtual Machines vs Containers
+- **Bản chất khác biệt**: VM (Máy ảo) mang tính "Heavyweight" vì chạy hệ điều hành riêng (Guest OS) trên Hypervisor, dẫn đến khởi động chậm (vài phút) và tốn tài nguyên. Trong khi đó, Container (Docker) là "Lightweight", dùng chung Host OS, khởi động tính bằng mili-giây.
+- **Tối ưu hóa**: Container giúp đóng gói ứng dụng (App + Bins/Lib) gọn nhẹ, mang lại hiệu năng Native, tiết kiệm RAM và cho phép chạy hàng trăm đến hàng ngàn container trên cùng một hạ tầng thay vì chỉ vài chục VM.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### 2. Thách thức khi triển khai Serverless (AWS Lambda & DynamoDB)
+- **Quản lý trạng thái (Stateless Lambda)**: AWS Lambda không lưu trữ dữ liệu trên memory giữa các request. Mọi trạng thái (ví dụ: Game state) đều phải được query và lưu trữ liên tục từ DynamoDB, đòi hỏi thiết kế kiến trúc khéo léo để tránh độ trễ.
+- **Bài toán chi phí (DynamoDB Scan Cost)**: Việc sử dụng lệnh `ScanCommand` để quét toàn bộ dữ liệu (VD: tìm player trong bảng) sẽ ngày càng chậm và đắt đỏ khi hệ thống scale up. Cần tối ưu bằng Query và Index.
+- **Kết nối chết (Stale Connections - GoneException)**: Xử lý triệt để các người chơi ngắt kết nối đột ngột để hệ thống Matchmaking không gửi message lãng phí.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### 3. WAF & Machine Learning cho Network Intrusion Detection System (Lê Hoàng Gia Đại)
+- **Giới hạn của Signature-based**: Phân tích lý do tại sao các bộ luật dựa trên chữ ký (Signature) truyền thống của WAF là không đủ để chống lại các cuộc tấn công hiện đại (Zero-day, Behavior anomalies).
+- **Giải pháp NIDS với ML**: Sử dụng Machine Learning để phân tích hành vi (Behavior-based detection). Mô hình được train trên tập dữ liệu chuẩn `CSE-CIC-IDS2018`.
+- **Workflow vận hành**: Xây dựng Real-time dashboard để monitor, sau đó tương quan (Correlate) các dự đoán từ NIDS với các sự kiện của AWS WAF để nâng cao khả năng phát hiện mối đe dọa trên môi trường Cloud.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
-
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
-
-#### Domain-Driven Design (DDD)
-
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
-
-#### Event-Driven Architecture
-
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### 4. Hành trình Nghề nghiệp: Từ Sysadmin đến DevOps (Trần Trung Vinh)
+- **Chuyển đổi tư duy (Mindset Shift)**: Cloud không chỉ là một công nghệ mới, nó là một "cách tư duy mới". Chuyển từ việc cài đặt thủ công sang tự động hóa (Infrastructure as Code).
+- **Kinh nghiệm phỏng vấn**: Những bài học xương máu và chiến lược phát triển bản thân đúc kết từ quá trình phỏng vấn tại các tập đoàn lớn (Central Retail Group).
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Tư Duy Kiến Trúc & Cloud
+- **Right Tool for the Right Job**: Không có công nghệ nào là hoàn hảo tuyệt đối. Tùy vào bài toán chi phí và hiệu năng để chọn VM hay Container; chọn thiết kế DB sao cho không bị dội chi phí (Scan vs Query).
+- **DevOps Mindset**: Khái niệm về hạ tầng giờ đây đã chuyển thành "Code". Sự ổn định của hệ thống phụ thuộc vào khả năng tự động hóa và giám sát.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+#### Tư Duy Bảo Mật Hiện Đại
+- Hiểu sâu hơn về giới hạn của các Rule tĩnh trong Firewall/WAF. Bảo mật hiện đại bắt buộc phải có sự can thiệp của AI/ML để phân tích các pattern bất thường của mạng thay vì chỉ dựa vào các rule đã biết.
 
-#### Kiến Trúc Kỹ Thuật
+### Ứng Dụng Vào Công Việc & Học Tập
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- **Đóng gói dự án cá nhân**: Thay vì chạy các ứng dụng Java (Spring Boot) hay Python (Flask) trực tiếp trên máy host gây xung đột môi trường, tôi sẽ bắt đầu viết `Dockerfile` để container hóa các web app của mình, phục vụ cho việc deploy lên server dễ dàng hơn.
+- **Nâng cấp tư duy Security (SIEM/Wazuh)**: Kiến thức từ phiên của anh Gia Đại về WAF + ML bổ trợ cực tốt cho định hướng nghiên cứu bảo mật của tôi. Tôi có thể áp dụng tư duy "Tương quan log" (Correlating events) này vào hệ thống Wazuh SIEM để viết các custom rule hiệu quả hơn cho đồ án "Session Hijacking and Fixation Prevention".
+- **Kiểm soát chi phí Cloud**: Nếu có triển khai các Demo nhỏ lên AWS trong tương lai, bài học về `DynamoDB Scan Cost` sẽ giúp tôi cẩn trọng hơn trong việc thiết kế cơ sở dữ liệu để không bị vượt quá giới hạn Free Tier.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Sự kiện AWS First Cloud Journey mang lại một góc nhìn đậm chất "Industry" (Thực tiễn công nghiệp) thay vì chỉ là lý thuyết sách vở.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+- **Về mặt kỹ thuật**: Được nhìn thấy những kiến trúc thực tế mà các team AWS đang triển khai giúp tôi hình dung rõ ràng hơn về con đường trở thành một Kỹ sư Hệ thống/Bảo mật. Việc mổ xẻ những "điểm yếu" của Serverless (như Stateless Lambda) cho thấy sự chuyên sâu của các diễn giả.
+- **Về mặt định hướng**: Session chia sẻ hành trình từ IT Helpdesk lên Sysadmin và DevOps của anh Trung Vinh truyền động lực rất lớn. Nó vạch ra một lộ trình rõ ràng, giúp sinh viên như tôi biết cần trang bị những bộ kỹ năng nào (từ OS, Network đến Cloud, Automation) để chuẩn bị cho các đợt phỏng vấn sắp tới.
+- **Không khí sự kiện**: Chuyên nghiệp nhưng cởi mở. Các case study về ứng dụng AI vào WAF thật sự mở ra hướng đi mới cho các dự án an toàn thông tin mà tôi đang theo đuổi.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+#### Một số hình ảnh tại sự kiện
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+***(Kiến thức về Container vs VM)***
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
+  <img src="/images/events/event2/anh6.jpg" style="width: 35%; margin: 0;" alt="So sánh VM và Container">
+  <img src="/images/events/event2/anh7.jpg" style="width: 35%; margin: 0;" alt="Chi tiết khác biệt VM và Container">
+</div>
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+***(Chủ đề AWS WAF & Machine Learning của diễn giả Lê Hoàng Gia Đại)***
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
+  <img src="/images/events/event2/anh9.jpg" style="width: 35%; margin: 0;" alt="WAF + ML for Cyber Attack Detection">
+  <img src="/images/events/event2/anh10.jpg" style="width: 35%; margin: 0;" alt="Agenda kết hợp AWS WAF và ML">
+</div>
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+***(Những thách thức thực tế với AWS và định hướng nghề nghiệp)***
+<div style="display: flex; flex-direction: row; justify-content: center; gap: 2%; margin-bottom: 15px;">
+  <img src="/images/events/event2/anh4.jpg" style="width: 35%; margin: 0;" alt="Thách thức với Serverless">
+  <img src="/images/events/event2/anh12.jpg" style="width: 35%; margin: 0;" alt="Hành trình nghề nghiệp">
+</div>
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> Tóm lại, sự kiện là cầu nối hoàn hảo giữa kiến thức Quản trị mạng/Bảo mật tôi đang học ở trường với các tiêu chuẩn Cloud thực tế của doanh nghiệp. Nó củng cố thêm quyết tâm của tôi trong việc làm chủ hạ tầng mạng và tích hợp AI vào quy trình bảo mật.

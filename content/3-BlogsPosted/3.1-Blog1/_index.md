@@ -1,31 +1,72 @@
 ---
+
 title: "Blog 1"
-date: 2024-01-01
+date: 2026-07-06
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# AWS Multi-AZ and Multi-Region: High Availability Solutions for Cloud Systems
+Managing permission management in large-scale Kubernetes environments is always a challenging problem for DevOps and Security engineers. How can we ensure the principle of "least privilege" for each microservice without turning the IAM Roles system into an uncontrollable "dumpster fire"?
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+This article will introduce a definitive solution to the above problem by combining the power of Amazon EKS Pod Identity and the new Session Policies feature, helping you transition from a bulky permission model to a centralized, lean, and fully automated security architecture.
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+## Part 1: Challenges from the Old Architecture (Traditional IRSA Mechanism)
 
-Key points to know:
+Before EKS Pod Identity, the standard method to grant AWS permissions to Pods was IAM Roles for Service Accounts (IRSA). Although a significant step forward compared to attaching IAM Roles directly to EC2 Nodes, IRSA still presents major operational barriers as the system scales:
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+* **IAM Role Proliferation:** To comply with the least privilege principle, each microservice (or group of Pods) requires a distinct IAM Role with fine-tuned policies. In complex microservice architectures with hundreds of services, this number can reach hundreds or even thousands of IAM Roles, creating massive difficulties for management, auditing, and tagging.
+* **Cumbersome Manual Operations:** Setting up IRSA requires engineers to manually map Kubernetes Service Accounts to IAM Roles via complex annotations in the manifest files. This process is time-consuming in CI/CD pipelines and prone to configuration errors.
+* **Risk of Over-permissioning:** Due to the operational burden of managing too many Roles, development teams often tend to become "lazy" by sharing a few IAM Roles with broader permissions than necessary across multiple services. This creates serious security vulnerabilities.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+## Part 2: Three-Layer Architecture Solution with EKS Pod Identity and Session Policies
 
-...Image...
+To address these challenges, Amazon introduced EKS Pod Identity. This solution not only simplifies the authentication flow but also integrates perfectly with Session Policies to apply dynamic security filters at runtime.
 
-...Link...
+This new architecture is divided into 3 distinct layers:
 
-...Guide...
+### Layer 1: Identity Layer (K8s Identity Layer)
+Here, the system focuses on the application's identity inside Kubernetes. Application Pods do not need to know or declare the IAM Role ARN directly. Instead, they simply identify themselves using a standard Kubernetes Service Account.
+
+The relationship between the Service Account and the IAM Role is centrally managed and synchronized by the EKS Pod Identity Agent—a component running as a DaemonSet on each worker node. This Agent acts as a proxy, handling the entire credential exchange process on behalf of the Pod.
+* **Flow:** `[EKS Cluster]` -> `[Pods]` -> `[EKS Pod Identity Agent]`
+
+### Layer 2: Policy & Control Layer (AWS Policy & Control Layer)
+This is the "heart" of the new solution. We use Pod Identity Associations to map the Kubernetes Service Account (at Layer 1) to a shared IAM Role (at Layer 2).
+
+The breakthrough lies here: When a Pod sends a request to retrieve credentials, the AWS STS (Security Token Service) is called. The EKS Pod Identity Agent automatically injects a Session Policy into this process.
+
+Session Policy acts as an additional filter. The actual permissions the Pod receives will be the intersection between the base IAM Role and this Session Policy. This means:
+* We can use a single shared IAM Role for multiple Pods.
+* However, each Pod (via the Session Policy) will only be granted the exact minimum set of permissions required for itself.
+* **Flow:** `[AWS STS]` + `[Session Policies (Scope-down JSON)]` -> Generates `[Temporary Credentials]`
+
+### Layer 3: Target Resource Layer
+Downstream AWS services such as Amazon S3, Amazon DynamoDB, or Amazon SQS receive requests from the Pod.
+
+At this stage, the requests have been safely and automatically scoped down. These services do not need to know or care about the internal Kubernetes structure. They simply execute the request based on the "Temporary Credentials" restricted by the Session Policy.
+* **Flow:** `[Amazon S3]` | `[Amazon DynamoDB]` | `[Amazon SQS]`
+
+## Part 3: Architectural Overview Diagram
+
+To better visualize the data flow and interacting components, here is the architecture diagram of the EKS Pod Identity solution combined with Session Policies:
+
+![EC2 Architecture vs Lambda Architecture](/images/Blog/blog1.jpg)
+
+*Figure 1: Detailed authentication and authorization flow (Source: Based on Amazon EKS operational flow).*
+
+* **Part 1 (Blue):** Initial setup process, IAM Role registration, and Association creation.
+* **Part 2 (Steps 3, 4, 4a, 4b):** Authentication and authorization flow at runtime, where the EKS Pod Identity Agent and AWS STS interact to issue Temporary Credentials and apply the Session Policy.
+* **Part 3 (Step 5):** The Pod uses the scoped-down credentials to access Amazon S3.
+
+## Part 4: Conclusion
+
+Transitioning from the traditional IRSA model to the EKS Pod Identity architecture combined with Session Policies brings massive and immediate benefits to organizations running Kubernetes:
+
+* **Operational Optimization:** Significantly reduces permission configuration time from hours (for hundreds of Roles) to just a few minutes (requiring only a simple Association configuration).
+* **Solving IAM Role Proliferation:** Completely eliminates the burden of managing a large number of IAM Roles. In practical deployments, this solution helps reduce the number of required IAM Roles by up to 80%.
+* **Absolute Security Enhancement:** Ensures 100% of Pods strictly adhere to the "Least Privilege" principle thanks to the ability to dynamically scope down permissions via Session Policies, even when sharing a base root IAM Role.
+
+This is a major step forward in modernizing and securing Amazon EKS clusters, helping operational teams focus on product development instead of wrestling with complex permission configurations.
+
+**Reference original article link:** [Amazon EKS Pod Identity: a new way for applications on EKS to obtain IAM credentials | AWS Containers Blog](https://aws.amazon.com/blogs/containers/amazon-eks-pod-identity-a-new-way-for-applications-on-eks-to-obtain-iam-credentials/)

@@ -1,14 +1,10 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-06-14
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
 
@@ -18,42 +14,33 @@ pre: " <b> 1.1. </b> "
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 1   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 30/04/2026   | 30/04/2026      |
+| 2   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 02/05/2026   | 02/05/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 03/05/2026   | 03/05/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 05/05/2026   | 05/05/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Tìm hiểu AWS Free Tier: Introduction to Offerings <br>&emsp; + Các loại ưu đãi: Always Free, 12 Months Free, Trials <br>&emsp; + Điều kiện tham gia (Eligibility) <br> | 06/05/2026 | 06/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Hoàn thành 100% lộ trình 5 bài học:** Đã nắm vững các khái niệm cơ bản về Cloud, IAM, Compute và Storage.
+* **Đủ điều kiện nhận thưởng:** Đã vượt qua các bài kiểm tra yêu cầu trong 5 module đầu tiên.
+* **Kỹ năng AWS Console:** * Biết cách tìm kiếm dịch vụ nhanh chóng trên thanh Search.
+  * Hiểu cách quản lý Billing và Dashboard để kiểm tra Credit.
+* **Tình trạng tài chính:** Nhận thành công $100 AWS Credit vào tài khoản Free Tier, sẵn sàng cho các bài Lab chuyên sâu về Cybersecurity và AI trong những tuần tiếp theo.
+* **Mindset:** Hiểu được tầm quan trọng của việc quản lý chi phí khi sử dụng dịch vụ Cloud để tránh phát sinh hóa đơn ngoài ý muốn.
+### AWS Free Tier: Introduction to Offerings
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+AWS Free Tier cung cấp cho người dùng cơ hội trải nghiệm thực tế các nền tảng, sản phẩm và dịch vụ của AWS. Dưới đây là các thông tin chính về gói dịch vụ này:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+**1. Các loại ưu đãi AWS Free Tier (Types of offerings):**
+* **Luôn miễn phí (Always Free):** Các dịch vụ có ưu đãi không bao giờ hết hạn và có sẵn cho tất cả khách hàng (trong một hạn mức sử dụng nhất định mỗi tháng).
+* **Miễn phí 12 tháng (12 Months Free):** Các ưu đãi này khả dụng trong vòng 12 tháng kể từ ngày đầu tiên bạn đăng ký tài khoản AWS.
+* **Dùng thử (Trials):** Các gói dùng thử ngắn hạn, thời gian miễn phí sẽ được tính bắt đầu từ ngày đầu tiên bạn kích hoạt hoặc sử dụng dịch vụ đó.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+**2. Điều kiện tham gia (Eligibility):**
+* Chương trình AWS Free Tier áp dụng cho tất cả mọi đối tượng: từ sinh viên, doanh nhân khởi nghiệp, doanh nghiệp nhỏ cho đến các tập đoàn lớn. 
+* Bất kỳ ai tạo một tài khoản AWS mới đều đủ điều kiện để nhận các ưu đãi này và bắt đầu hành trình xây dựng trên Cloud.
+**3. Chứng chỉ :**
+![Chứng chỉ AWS Training & Certification](/images/Worklog/AWSFreeTier.jpg)
+---

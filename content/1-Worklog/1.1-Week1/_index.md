@@ -1,57 +1,48 @@
 ---
 title: "Week 1 Worklog"
-date: 2024-01-01
+date: 2026-06-14
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Connect and familiarize with members of the First Cloud AI Journey (FCAJ).
+* Understand core AWS services and master the AWS Management Console & CLI.
+* Complete the initial learning path to qualify for the $100 AWS Free Tier Credit.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to Implement This Week:
+| Day | Task                                                                                                                                                                                                    | Start Date | End Date   | Resources                                 |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------- | ----------------------------------------- |
+| 1   | - Meet FCAJ members <br> - Read and note internal rules and regulations at the internship unit                                                                                                          | 30/04/2026 | 30/04/2026 |                                           |
+| 2   | - Research AWS and service categories: <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ...                                                         | 02/05/2026 | 02/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Create AWS Free Tier account <br> - Explore AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Set up AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + Master basic CLI commands | 03/05/2026 | 03/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Learn EC2 Fundamentals: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Methods for remote SSH into EC2 <br> - Learn about Elastic IP                            | 05/05/2026 | 05/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Learn about AWS Free Tier: Introduction to Offerings <br>&emsp; + Types of offerings: Always Free, 12 Months Free, Trials <br>&emsp; + Eligibility <br> | 06/05/2026 | 06/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* **Completed 100% of the 5-module path:** Mastered fundamental concepts of Cloud, IAM, Compute, and Storage.
+* **Eligible for Rewards:** Passed all required assessments within the first 5 modules to qualify for the credit.
+* **AWS Console Skills:** * Efficiently navigating services using the Search bar.
+    * Managing Billing and Dashboards to monitor Credit usage.
+* **Financial Status:** Successfully claimed the **$100 AWS Credit** into the Free Tier account, ready for advanced Cybersecurity and AI labs in the coming weeks.
+* **Mindset:** Developed a deep understanding of cost management within the Cloud to prevent unexpected invoices.
 
-* Successfully created and configured an AWS Free Tier account.
+### AWS Free Tier: Introduction to Offerings
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+The AWS Free Tier provides users with hands-on experience with AWS platforms, products, and services. Below is key information about this offering:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+**1. Types of AWS Free Tier offerings:**
+* **Always Free:** These offers do not expire and are available to all AWS customers (up to a specified usage limit each month).
+* **12 Months Free:** These offers are available for 12 months following your initial sign-up date to AWS.
+* **Trials:** Short-term free trial offers start from the date you activate a particular service.
 
-* Used AWS CLI to perform basic operations such as:
+**2. Eligibility:**
+* The AWS Free Tier is available to everyone: from students and entrepreneurs to small businesses and Fortune 500 companies.
+* Anyone who creates a new AWS account is eligible for these offers and can start building on the Cloud.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+**3. Certificate:**
+![AWS Training & Certification Certificate](/images/Worklog/AWSFreeTier.jpg)
