@@ -26,7 +26,7 @@ pre: " <b> 1.10. </b> "
 ---
 
 **Sơ đồ Kiến trúc Kết nối Dữ liệu & Luồng Ingestion AI - Pharmacare AI:**
-![Kiến trúc tổng thể PharmaCare AI](/ThucTapAWS/images/5-Workshop/5.1-Workshop-overview/dia01.png)
+![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/Worklog/diafinal.png)
 
 ### Chi tiết quá trình thực hiện:
 

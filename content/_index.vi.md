@@ -23,7 +23,7 @@ chapter: false
 
  **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
- **Thời gian thực tập:** Từ ngày 04/05/2025 đến ngày 30/07/2026
+ **Thời gian thực tập:** Từ ngày 05/05/2025 đến ngày 30/07/2026
 
 ![Ảnh đại diện của bạn](/ThucTapAWS/images/avatar.jpg)
 

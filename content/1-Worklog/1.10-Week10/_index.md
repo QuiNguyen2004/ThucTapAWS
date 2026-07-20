@@ -26,7 +26,7 @@ pre: " <b> 1.10. </b> "
 ---
 
 **PharmaCare AI - Overall Architecture & Data Ingestion Pipeline:**
-![PharmaCare AI Overall Architecture](/ThucTapAWS/images/5-Workshop/5.1-Workshop-overview/dia01.png)
+![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/Worklog/diafinal.png)
 
 ### Detailed Implementation Process:
 

@@ -24,7 +24,7 @@ pre: " <b> 1.8. </b> "
 
 ---
 **Overall project architecture diagram:**
-![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/Worklog/AWS_Architecture-PharmacareAI.png)
+![AWS Architecture - Pharmacare AI](/ThucTapAWS/images/Worklog/diafinal.png)
 
 ### Detailed Implementation Process:
 

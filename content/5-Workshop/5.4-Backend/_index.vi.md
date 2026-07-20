@@ -20,7 +20,7 @@ Các Lambda được triển khai trong **Private App Subnet** và kết nối r
 
 Log và thông số hoạt động của Lambda được gửi đến Amazon CloudWatch để phục vụ giám sát và cảnh báo.
     
-![Kiến trúc tổng thể PharmaCare AI](/ThucTapAWS/images/5-Workshop/5.1-Workshop-overview/dia01.png)
+![Kiến trúc tổng thể PharmaCare AI](/ThucTapAWS/images/5-Workshop/5.1-Workshop-overview/diafinal.png)
 
 
 
